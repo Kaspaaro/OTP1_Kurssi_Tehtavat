@@ -43,11 +43,6 @@
 
                     </execution>
                     <execution>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                    <execution>
                         <id>jacoco-report</id>
                         <phase>test</phase>
                         <goals>
