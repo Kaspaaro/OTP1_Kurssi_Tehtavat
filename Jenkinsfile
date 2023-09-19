@@ -35,7 +35,7 @@ pipeline {
                     allowMissing: false,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
-                    reportDir: 'target/site/jacoco/',
+                    reportDir: 'site/jacoco/',
                     reportFiles: 'index.html',
                     reportName: 'JaCoCo Code Coverage'
                 ])
@@ -46,7 +46,7 @@ pipeline {
     post {
         always {
             // Archive your build artifacts, send notifications, etc.
-            archiveArtifacts 'target/*.jar'
+            archiveArtifacts 'site/*.jar'
         }
     }
 }
