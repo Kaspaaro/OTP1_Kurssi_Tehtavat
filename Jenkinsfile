@@ -30,17 +30,23 @@ pipeline {
 
         stage('Publish Code Coverage') {
             steps {
-                // Publish JaCoCo code coverage report as a Jenkins artifact
-                publishHTML(target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'site/jacoco/',
-                    reportFiles: 'index.html',
-                    reportName: 'JaCoCo Code Coverage'
-                ])
+                script {
+                    // Adjust the path to your JaCoCo report directory if needed
+                    def jacocoReportDir = "${workspace}/site/jacoco/"
+
+                    // Publish JaCoCo code coverage report as a Jenkins artifact
+                    publishHTML(target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: jacocoReportDir,
+                        reportFiles: 'index.html',
+                        reportName: 'JaCoCo Code Coverage'
+                    ])
+                }
             }
         }
+
     }
 
     post {
