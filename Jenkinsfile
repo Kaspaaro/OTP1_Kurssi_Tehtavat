@@ -15,7 +15,8 @@ pipeline {
         }
         stage('Build'){
             steps{
-               bat 'mvn -version -clean -build'
+               bat 'mvn -version'
+               bat 'mvm -clean'
 
             }
         }
