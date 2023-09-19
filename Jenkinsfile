@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    tools {
+        // Define your build tool here if needed
+        maven 'M3'
+    }
+
     stages {
         stage('Checkout') {
             steps {
