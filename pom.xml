@@ -54,7 +54,6 @@
                             <goal>report</goal>
                         </goals>
                         <configuration>
-                            <includes>*</includes>
                             <dataFile>${project.build.directory}/coverage-reports/jacoco.exec</dataFile>
                             <outputDirectory>target/jacoco-report</outputDirectory>
                         </configuration>
