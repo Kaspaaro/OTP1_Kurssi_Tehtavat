@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Code Coverage') {
             steps {
-               step([$class: 'JacocoPublisher',
+               jacoco([$class: 'JacocoPublisher',
                          execPattern: 'target/*.exec',
                          classPattern: 'target/classes',
                          sourcePattern: 'src/main/java',
