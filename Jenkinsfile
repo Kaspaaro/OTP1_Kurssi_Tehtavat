@@ -20,7 +20,10 @@ pipeline {
         }
         stage('Code Coverage') {
             steps {
-                jacoco(execPattern: '**/target/*.exec')
+                jacoco(execPattern: 'target/*.exec',
+                             classPattern: 'target/classes',
+                             sourcePattern: 'src/main/java',
+                             exclusionPattern: 'src/test*')
             }
         }
     }
