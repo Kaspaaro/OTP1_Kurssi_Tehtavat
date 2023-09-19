@@ -40,7 +40,7 @@
                             <goal>prepare-agent</goal>
                         </goals>
                         <configuration>
-                            <inclNoLocationClasses>true</inclNoLocationClasses>
+                            <includes>**/*Test*.class</includes>
                         </configuration>
                     </execution>
 
