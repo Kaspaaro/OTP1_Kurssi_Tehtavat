@@ -15,8 +15,8 @@ pipeline {
         }
         stage('Build'){
             steps{
+            bat 'java -version'
                bat 'mvn clean install'
-               bat 'mvn test'
             }
         }
     }
