@@ -17,14 +17,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your project, compile code, etc.
-                sh 'mvn clean package' // Assuming a Maven project, adjust for your build tool
+                bat 'mvn clean package' // Use 'bat' for Windows batch command
             }
         }
 
         stage('Test') {
             steps {
                 // Run your tests with JaCoCo enabled
-                sh 'mvn jacoco:prepare-agent test jacoco:report' // Adjust for your build tool and testing framework
+                bat 'mvn jacoco:prepare-agent test jacoco:report' // Use 'bat' for Windows batch command
             }
         }
 
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     // Adjust the path to your JaCoCo report directory if needed
-                    def jacocoReportDir = "${workspace}/site/jacoco/"
+                    def jacocoReportDir = "${workspace}/target/site/jacoco/"
 
                     // Publish JaCoCo code coverage report as a Jenkins artifact
                     publishHTML(target: [
@@ -46,13 +46,12 @@ pipeline {
                 }
             }
         }
-
     }
 
     post {
         always {
             // Archive your build artifacts, send notifications, etc.
-            archiveArtifacts 'site/*.jar'
+            archiveArtifacts 'target/*.jar'
         }
     }
 }
