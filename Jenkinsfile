@@ -39,7 +39,7 @@ pipeline {
                         allowMissing: false,
                         alwaysLinkToLastBuild: true,
                         keepAll: true,
-                        reportDir: jacocoReportDir,
+                        reportDir: '${workspace}/site',
                         reportFiles: 'index.html',
                         reportName: 'JaCoCo Code Coverage'
                     ])
