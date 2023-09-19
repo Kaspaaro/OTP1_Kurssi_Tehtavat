@@ -15,7 +15,8 @@ pipeline {
         }
         stage('Build'){
             steps{
-               bat 'mvn -clean -install'
+               bat 'mvn -clean'
+               bat 'mvn -install'
             }
         }
         stage('Code Coverage') {
