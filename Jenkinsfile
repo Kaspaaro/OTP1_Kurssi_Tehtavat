@@ -18,15 +18,5 @@ pipeline {
                bat 'mvn clean install'
             }
         }
-        stage('Code Coverage') {
-            steps {
-               jacoco([$class: 'JacocoPublisher',
-                         execPattern: 'target/*.exec',
-                         classPattern: 'target/classes',
-                         sourcePattern: 'src/main/java',
-                         exclusionPattern: 'src/test*'
-                   ])
-            }
-        }
     }
 }
