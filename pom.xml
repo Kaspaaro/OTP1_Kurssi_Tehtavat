@@ -39,11 +39,7 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <includes>**/*Test*.class</includes>
-                        </configuration>
                     </execution>
-
                     <execution>
                         <id>report</id>
                         <phase>prepare-package</phase>
@@ -53,24 +49,20 @@
                     </execution>
                     <execution>
                         <id>jacoco-report</id>
-
                         <phase>test</phase>
-
                         <goals>
-
                             <goal>report</goal>
                         </goals>
                         <configuration>
+                            <includes>**/</includes>
                             <dataFile>${project.build.directory}/coverage-reports/jacoco.exec</dataFile>
                             <outputDirectory>target/jacoco-report</outputDirectory>
-
                         </configuration>
                     </execution>
                     <execution>
                         <id>generate-report</id>
                         <phase>verify</phase>
                         <goals><goal>report</goal></goals>
-
                     </execution>
                 </executions>
 
