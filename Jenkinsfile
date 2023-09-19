@@ -13,5 +13,14 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Build'){
+            steps{
+                script {
+                def mavenVersion = sh(script: 'mvn -version', returnStdout: true).trim()
+                echo "Maven Version: $mavenVersion"
+                }
+
+            }
+        }
     }
 }
