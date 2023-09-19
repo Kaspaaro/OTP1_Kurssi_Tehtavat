@@ -1,29 +1,49 @@
 pipeline {
     agent any
-    
-    stages {
-        stage('Build') {
-            steps {
-                
+
+    tools{
+    maven('M3')
+    }
+    stage('Checkout') {
+                steps {
+                    // Checkout your source code from version control
+                    checkout scm
+                }
             }
-        }
-        
-        stage('Test') {
-            steps {
-               
+
+            stage('Build') {
+                steps {
+                    // Build your project, compile code, etc.
+                    sh 'mvn clean package' // Assuming a Maven project, adjust for your build tool
+                }
             }
-        }
-        
-        stage('Code Coverage') {
-            steps {
-                sh 'mvn jacoco:report' // This generates the JaCoCo report
+
+            stage('Test') {
+                steps {
+                    // Run your tests with JaCoCo enabled
+                    sh 'mvn jacoco:prepare-agent test jacoco:report' // Again, adjust for your build tool and testing framework
+                }
             }
-            post {
-                always {
-                    // Archive and publish the coverage report
-                    jacoco(execPattern: '**/target/jacoco.exec')
+
+            stage('Publish Code Coverage') {
+                steps {
+                    // Publish JaCoCo code coverage report as a Jenkins artifact
+                    publishHTML(target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'target/site/jacoco/',
+                        reportFiles: 'index.html',
+                        reportName: 'JaCoCo Code Coverage'
+                    ])
                 }
             }
         }
-    }
+
+        post {
+            always {
+                // Archive your build artifacts, send notifications, etc.
+                archiveArtifacts 'target/*.jar'
+            }
+        }
 }
