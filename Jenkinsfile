@@ -15,7 +15,10 @@ pipeline {
         }
         stage('Build'){
             steps{
-               sh(script: 'mvn -version', returnStdout: true).trim()
+               script {
+                    def mavenVersion = sh(script: 'mvn -version', returnStdout: true).trim()
+                    echo "Maven Version: $mavenVersion"
+                }
             }
         }
     }
