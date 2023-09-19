@@ -14,11 +14,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            // Archive your build artifacts, send notifications, etc.
-            archiveArtifacts 'target/*.jar'
-        }
-    }
 }
