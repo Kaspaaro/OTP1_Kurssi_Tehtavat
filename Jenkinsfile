@@ -13,39 +13,6 @@ pipeline {
                 checkout scm
             }
         }
-
-        stage('Build') {
-            steps {
-                // Build your project, compile code, etc.
-                bat 'mvn clean package' // Use 'bat' for Windows batch command
-            }
-        }
-
-        stage('Test') {
-            steps {
-                // Run your tests with JaCoCo enabled
-                bat 'mvn jacoco:prepare-agent test jacoco:report' // Use 'bat' for Windows batch command
-            }
-        }
-
-        stage('Publish Code Coverage') {
-            steps {
-                script {
-                    // Adjust the path to your JaCoCo report directory if needed
-                    def jacocoReportDir = "${workspace}/target/site/jacoco/"
-
-                    // Publish JaCoCo code coverage report as a Jenkins artifact
-                    publishHTML(target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: true,
-                        keepAll: true,
-                        reportDir: jacocoReportDir,
-                        reportFiles: 'index.html',
-                        reportName: 'JaCoCo Code Coverage'
-                    ])
-                }
-            }
-        }
     }
 
     post {
