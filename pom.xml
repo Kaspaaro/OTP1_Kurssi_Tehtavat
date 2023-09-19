@@ -36,15 +36,11 @@
                 <version>0.8.7</version>
                 <executions>
                     <execution>
+                        <id>prepare-agent</id>
+                        <phase>initialize</phase>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <includes>
-                                <include>**/classes/**</include>
-                                <include>**/test-classes/**</include>
-                            </includes>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>jacoco-report</id>
@@ -52,24 +48,12 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                        <configuration>
-                            <includes>
-                                <include>**/src/main/java/**</include>
-                                <include>**/src/test/java/**</include>
-                            </includes>
-                            <dataFile>${project.build.directory}/coverage-reports/jacoco.exec</dataFile>
-                            <outputDirectory>target/jacoco-report</outputDirectory>
-                        </configuration>
                     </execution>
-                    <execution>
-                        <id>generate-report</id>
-                        <phase>verify</phase>
-                        <goals><goal>report</goal></goals>
-                    </execution>
-                </executions>
 
+                </executions>
             </plugin>
         </plugins>
     </build>
+
 
 </project>
