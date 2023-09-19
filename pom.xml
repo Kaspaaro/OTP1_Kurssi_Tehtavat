@@ -41,7 +41,7 @@
                         </goals>
                         <configuration>
                         <includes>
-                            <include>org/example/test/**</include>
+                            <include>org.example</include>
                         </includes>
                         </configuration>
                     </execution>
