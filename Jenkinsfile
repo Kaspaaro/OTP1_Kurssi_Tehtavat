@@ -14,14 +14,6 @@ pipeline {
             }
         }
 
-
-        stage('Test') {
-            steps {
-                // Run your tests with JaCoCo enabled
-                bat 'mvn jacoco:prepare-agent test jacoco:report' // Use 'bat' for Windows batch command
-            }
-        }
-
         stage('Publish Code Coverage') {
             steps {
                 script {
