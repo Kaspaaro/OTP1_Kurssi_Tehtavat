@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Adjust the path to your JaCoCo report directory if needed
-                    def jacocoReportDir = "${workspace}/target/site/jacoco/"
+                    def jacocoReportDir = "${workspace}/site/jacoco/"
 
                     // Publish JaCoCo code coverage report as a Jenkins artifact
                     publishHTML(target: [
