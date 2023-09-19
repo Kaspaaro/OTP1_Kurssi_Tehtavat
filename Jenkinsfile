@@ -13,12 +13,6 @@ pipeline {
                 checkout scm
             }
         }
-
-        stage('Build') {
-            steps {
-                // Build your project, compile code, etc.
-                bat 'mvn clean package' // Use 'bat' for Windows batch command
-            }
         }
 
         stage('Test') {
