@@ -43,7 +43,7 @@
 
                         <configuration>
                             <includes>
-                                <include>org/example/**</include>
+                                <include>JacocoReport/**</include>
                             </includes>
                         </configuration>
                     </execution>
