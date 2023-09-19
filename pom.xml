@@ -25,6 +25,7 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -39,10 +40,11 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+
                         <configuration>
-                        <includes>
-                            <include>org.example.DistanceCalculatorTest</include>
-                        </includes>
+                            <includes>
+                                <include>org/example/**</include>
+                            </includes>
                         </configuration>
                     </execution>
                     <execution>
