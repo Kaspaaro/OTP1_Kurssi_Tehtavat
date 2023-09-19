@@ -21,7 +21,6 @@ pipeline {
         stage('Code Coverage') {
             steps {
                 jacoco(execPattern: '**/target/*.exec')
-                publishHTML(target: [reportDir: 'target/site/jacoco', reportFiles: 'index.html', reportName: 'JaCoCo Code Coverage Report'], allowMissing: true)
             }
         }
     }
