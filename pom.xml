@@ -41,7 +41,7 @@
                         </goals>
                         <configuration>
                         <includes>
-                            <include>org.example</include>
+                            <include>org.example.DistanceCalculatorTest</include>
                         </includes>
                         </configuration>
                     </execution>
