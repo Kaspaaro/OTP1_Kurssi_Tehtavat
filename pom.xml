@@ -37,8 +37,11 @@
 
                 <executions>
                     <execution>
+                        <id>install</id>
+                        <phase>install</phase>
                         <goals>
                             <goal>prepare-agent</goal>
+                            <goal>report</goal>
                         </goals>
 
                     </execution>
